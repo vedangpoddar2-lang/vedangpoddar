@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vedang Poddar - CV</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #1e40af;
+            --secondary-blue: #3b82f6;
+            --light-blue: #dbeafe;
+            --lighter-blue: #f0f9ff;
+            --accent-blue: #0ea5e9;
+            --dark-blue: #1e3a8a;
+            --text-dark: #1f2937;
+            --text-medium: #4b5563;
+            --text-light: #6b7280;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            min-height: 100vh;
+        }
+
+        .cv-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--white);
+            position: relative;
+        }
+
+        /* Innovative Header with Diagonal Design */
+        .header {
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary-blue) 50%, var(--secondary-blue) 100%);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="80" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="70" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="70" cy="30" r="1" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            animation: shimmer 15s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100px) translateY(-100px); }
+            100% { transform: translateX(100px) translateY(100px); }
+        }
+
+        .header-content {
+            text-align: center;
+            z-index: 2;
+            position: relative;
+        }
+
+        .name {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .title {
+            font-size: 1.5rem;
+            font-weight: 300;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Timeline Design for Experience */
+        .timeline-container {
+            position: relative;
+            padding: 2rem;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--secondary-blue), var(--accent-blue));
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(30, 64, 175, 0.1);
+            border: 2px solid var(--light-blue);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 20px 40px rgba(30, 64, 175, 0.2);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3.5rem;
+            top: 2rem;
+            width: 20px;
+            height: 20px;
+            background: var(--secondary-blue);
+            border-radius: 50%;
+            border: 4px solid var(--white);
+            box-shadow: 0 0 0 3px var(--secondary-blue);
+        }
+
+        .company-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .company-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            object-fit: contain;
+            background: var(--lighter-blue);
+            padding: 8px;
+            border: 2px solid var(--light-blue);
+        }
+
+        .company-info h3 {
+            font-size: 1.4rem;
+            color: var(--primary-blue);
+            font-weight: 700;
+        }
+
+        .company-info .position {
+            color: var(--text-medium);
+            font-weight: 500;
+            margin: 0.3rem 0;
+        }
+
+        .duration {
+            background: var(--secondary-blue);
+            color: var(--white);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-left: auto;
+        }
+
+        /* Card Grid Layout for Education */
+        .education-section {
+            padding: 2rem;
+            background: var(--lighter-blue);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            color: var(--primary-blue);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, var(--secondary-blue), var(--accent-blue));
+            border-radius: 2px;
+        }
+
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .education-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+        }
+
+        .education-card:hover {
+            transform: translateY(-10px) rotate(1deg);
+            border-color: var(--secondary-blue);
+            box-shadow: 0 20px 40px rgba(30, 64, 175, 0.15);
+        }
+
+        .education-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(to right, var(--secondary-blue), var(--accent-blue));
+        }
+
+        .education-degree {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .education-institution {
+            color: var(--text-medium);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .education-year {
+            display: inline-block;
+            background: var(--light-blue);
+            color: var(--primary-blue);
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .education-grade {
+            color: var(--secondary-blue);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* Hexagonal Layout for Skills */
+        .skills-section {
+            padding: 3rem 2rem;
+            background: var(--white);
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-hexagon {
+            position: relative;
+            background: linear-gradient(135deg, var(--light-blue), var(--lighter-blue));
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+        }
+
+        .skill-hexagon:hover {
+            background: linear-gradient(135deg, var(--secondary-blue), var(--primary-blue));
+            color: var(--white);
+            transform: scale(1.05);
+        }
+
+        .skill-hexagon h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
+        }
+
+        .skill-hexagon:hover h4 {
+            color: var(--white);
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .skill-tag {
+            background: var(--white);
+            color: var(--primary-blue);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .skill-hexagon:hover .skill-tag {
+            background: rgba(255,255,255,0.2);
+            color: var(--white);
+        }
+
+        /* Masonry Layout for Achievements */
+        .achievements-section {
+            padding: 3rem 2rem;
+            background: var(--lighter-blue);
+        }
+
+        .achievements-masonry {
+            column-count: 2;
+            column-gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .achievement-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            break-inside: avoid;
+            border-left: 5px solid var(--secondary-blue);
+            transition: all 0.3s ease;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(30, 64, 175, 0.1);
+        }
+
+        .achievement-title {
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .achievement-company {
+            color: var(--text-medium);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .achievement-description {
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, var(--light-blue), var(--lighter-blue));
+            color: var(--primary-blue);
+            padding: 0.2rem 0.6rem;
+            border-radius: 8px;
+            font-weight: 600;
+            display: inline-block;
+            margin: 0.1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .name {
+                font-size: 2.5rem;
+            }
+            
+            .timeline {
+                padding-left: 2rem;
+            }
+            
+            .timeline::before {
+                left: 10px;
+            }
+            
+            .timeline-item::before {
+                left: -2.5rem;
+            }
+            
+            .achievements-masonry {
+                column-count: 1;
+            }
+            
+            .contact-info {
+                gap: 1rem;
+            }
+        }
+
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.1), transparent);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-circle:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-circle:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            top: 50%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .floating-circle:nth-child(3) {
+            width: 100px;
+            height: 100px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-elements">
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+    </div>
+
+    <div class="cv-container">
+        <header class="header">
+            <div class="header-content">
+                <h1 class="name">Vedang Poddar</h1>
+                <p class="title">Finance Professional | Investment Research & Analysis</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>vedang.poddar@email.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+91 XXXXX XXXXX</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Mumbai, India</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <span>linkedin.com/in/vedang-poddar</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="education-section">
+            <h2 class="section-title">Education</h2>
+            <div class="education-grid">
+                <div class="education-card">
+                    <div class="education-degree">MBA</div>
+                    <div class="education-institution">BITS School of Management, Mumbai</div>
+                    <div class="education-year">2026</div>
+                    <div class="education-grade">Dean's Merit List</div>
+                </div>
+                
+                <div class="education-card">
+                    <div class="education-degree">CFA Level I</div>
+                    <div class="education-institution">CFA Institute</div>
+                    <div class="education-year">2021</div>
+                    <div class="education-grade">First Attempt</div>
+                </div>
+                
+                <div class="education-card">
+                    <div class="education-degree">B.Sc. Finance</div>
+                    <div class="education-institution">NMIMS University, Mumbai</div>
+                    <div class="education-year">2020</div>
+                    <div class="education-grade">3.52/4 (Top 10%)</div>
+                </div>
+                
+                <div class="education-card">
+                    <div class="education-degree">HSC (XII)</div>
+                    <div class="education-institution">Mumbai University</div>
+                    <div class="education-year">2017</div>
+                    <div class="education-grade">90.6% (Rank 1/704)</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="timeline-container">
+            <h2 class="section-title">Work Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="company-header">
+                        <img src="https://media.licdn.com/dms/image/v2/C560BAQHb_a7AB0LmIg/company-logo_200_200/company-logo_200_200/0/1630640869849/tresvista_logo?e=2147483647&v=beta&t=8kBvYQkG6bvUlvhGkqiGQZwsUoqXKWZ5C_6_wFJKymc" alt="TresVista" class="company-logo" onerror="this.style.display='none'">
+                        <div class="company-info">
+                            <h3>Associate, Research and Investment</h3>
+                            <div class="position">TresVista Financial Services</div>
+                        </div>
+                        <div class="duration">Mar'21 - Mar'24</div>
+                    </div>
+                    
+                    <div class="achievement-description">
+                        <strong>Key Achievements:</strong><br>
+                        • Received <span class="highlight">fast-track promotion twice</span> within 3 years; <span class="highlight">Employee of the Quarter</span> (25/800)<br>
+                        • <span class="highlight">Top 5% (60/1,200+)</span> employees with highest performance rating in 2 consecutive cycles<br>
+                        • Appointed as <span class="highlight">exclusive SPOC</span> to a <span class="highlight">$70Mn equity fund</span><br><br>
+
+                        <strong>Private Equity & Fundraising:</strong><br>
+                        • Successfully onboarded a <span class="highlight">$50Bn PE fund's</span> financial reporting division<br>
+                        • Facilitated <span class="highlight">~$500Mn investment commitments</span> for a new $4Bn fund<br>
+                        • Supervised financial data management of <span class="highlight">15+ portfolio companies</span><br>
+                        • Participated in <span class="highlight">50+ LP/GP meetings</span> of a $2.5Bn fund<br><br>
+
+                        <strong>Investment Research & Analysis:</strong><br>
+                        • Recommended <span class="highlight">investments worth $3Mn+</span> across 9 companies in 7 sectors<br>
+                        • Constructed <span class="highlight">25+ financial models</span> using DCF and comparable analysis<br>
+                        • Maintained <span class="highlight">60+ models</span> driving <span class="highlight">~$250Mn</span> investment decisions<br>
+                        • Reduced <span class="highlight">TAT by 40%</span> through process automation
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="company-header">
+                        <img src="https://logos-world.net/wp-content/uploads/2021/02/JP-Morgan-Chase-Logo.png" alt="JPMorgan Chase" class="company-logo" onerror="this.style.display='none'">
+                        <div class="company-info">
+                            <h3>Analyst, Asset and Wealth Management</h3>
+                            <div class="position">J.P. Morgan Chase</div>
+                        </div>
+                        <div class="duration">Aug'20 - Mar'21</div>
+                    </div>
+                    
+                    <div class="achievement-description">
+                        <strong>Key Achievement:</strong><br>
+                        • Recognized as <span class="highlight">top performer (top 10</span> in team of ~150 across US & APAC)<br><br>
+
+                        <strong>Transaction Management:</strong><br>
+                        • Managed <span class="highlight">global cash movement worth $300Bn per month</span><br>
+                        • Maintained <span class="highlight">&lt;5% internal error-rate</span> (vs team average ~8%)<br>
+                        • Processed <span class="highlight">~2,500 wire & ACH transfers monthly</span><br>
+                        • Liaised with <span class="highlight">40+ onshore bankers</span> on process improvements
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="achievements-section">
+            <h2 class="section-title">Key Experiences & Leadership</h2>
+            <div class="achievements-masonry">
+                <div class="achievement-card">
+                    <div class="achievement-title">Cipla (OIB)</div>
+                    <div class="achievement-company">Top Pharmaceutical Company | 2025</div>
+                    <div class="achievement-description">
+                        Recognized as <span class="highlight">"Top 5 Intern"</span> (of 37). Delivered insights to Global CEO and IB CFO. Improved visibility of <span class="highlight">₹100Cr+ marketing spends</span> through 2 Power BI dashboards integrating 6 data sources.
+                    </div>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-title">CEO's Office</div>
+                    <div class="achievement-company">BITS Mumbai | 2025</div>
+                    <div class="achievement-description">
+                        Led acquisition and onboarding of <span class="highlight">6 vendors</span> for "Retail Plaza". Negotiated with C-Suite of brands like <span class="highlight">7 Eleven, Apollo, Blue Tokai</span>.
+                    </div>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-title">TEDx Event</div>
+                    <div class="achievement-company">Event Management | 2024</div>
+                    <div class="achievement-description">
+                        <span class="highlight">Raised ₹5.5 Lakhs</span> in cash and in-kind sponsorships for the inaugural TEDx-BITSoM event.
+                    </div>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-title">Case Competition Winner</div>
+                    <div class="achievement-company">National Level | 2025</div>
+                    <div class="achievement-description">
+                        <span class="highlight">National Winner</span> of "Cipla Ascend S03" (1/5200). National Semi-Finalist of L'oreal Brandstorm.
+                    </div>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-title">B2B Consultant</div>
+                    <div class="achievement-company">Lal10 Textile Startup | 2023</div>
+                    <div class="achievement-description">
+                        Identified a <span class="highlight">~$50Mn export opportunity</span> for a $20Mn Indian textile startup. Recommended 3 market entry techniques from 500+ potential buyers.
+                    </div>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-title">Social Impact</div>
+                    <div class="achievement-company">CSR & NGO Work | 2022-2023</div>
+                    <div class="achievement-description">
+                        Developed financial management system for <span class="highlight">450+ tribal women</span>. Empowered <span class="highlight">15+ at-risk women</span> with skills training. Raised <span class="highlight">₹2.5 Lakhs</span> for vocational center.
+                    </div>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-title">Model UN Pioneer</div>
+                    <div class="achievement-company">Saharanpur | 2016</div>
+                    <div class="achievement-description">
+                        Pioneered Saharanpur's <span class="highlight">first-ever Model UN</span>. Generated <span class="highlight">₹75K+ revenue</span> from 100+ students across 7 schools. Led 20+ introduction sessions reaching 250+ students.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="skills-section">
+            <h2 class="section-title">Skills & Expertise</h2>
+            <div class="skills-container">
+                <div class="skill-hexagon">
+                    <h4><i class="fas fa-chart-line"></i> Financial Analysis</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">DCF Modeling</span>
+                        <span class="skill-tag">Valuation</span>
+                        <span class="skill-tag">M&A Analysis</span>
+                        <span class="skill-tag">Portfolio Management</span>
+                        <span class="skill-tag">Risk Assessment</span>
+                    </div>
+                </div>
+                
+                <div class="skill-hexagon">
+                    <h4><i class="fas fa-building"></i> Investment Research</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Equity Research</span>
+                        <span class="skill-tag">Private Equity</span>
+                        <span class="skill-tag">Hedge Funds</span>
+                        <span class="skill-tag">Due Diligence</span>
+                        <span class="skill-tag">Market Analysis</span>
+                    </div>
+                </div>
+                
+                <div class="skill-hexagon">
+                    <h4><i class="fas fa-laptop-code"></i> Technical Skills</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Excel/VBA</span>
+                        <span class="skill-tag">Power BI</span>
+                        <span class="skill-tag">Bloomberg</span>
+                        <span class="skill-tag">Financial Modeling</span>
+                        <span class="skill-tag">Data Analytics</span>
+                    </div>
+                </div>
+                
+                <div class="skill-hexagon">
+                    <h4><i class="fas fa-users"></i> Leadership</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Team Management</span>
+                        <span class="skill-tag">Training</span>
+                        <span class="skill-tag">Client Relations</span>
+                        <span class="skill-tag">Process Optimization</span>
+                        <span class="skill-tag">Strategic Planning</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
